@@ -34,7 +34,7 @@ it('check "getDeadline" - within 1 working day', () => {
   const { timeLimits } = conditions;
   const timeAmount = 2;
   const startDate = new Date('2021-04-21T16:34:16');
-  const deadline = new Date('2021-04-21T18:34:16');
+  const deadline = 'Wed Apr 21 2021 18:34:16 GMT+0300 (Eastern European Summer Time)';
 
   expect(getDeadline(startDate, timeAmount, timeLimits)).toEqual(deadline);
 });
@@ -43,7 +43,7 @@ it('check "getDeadline" - increment day by 1', () => {
   const { timeLimits } = conditions;
   const timeAmount = 6;
   const startDate = new Date('2021-04-21T16:34:16');
-  const deadline = new Date('2021-04-22T13:34:16');
+  const deadline = 'Thu Apr 22 2021 13:34:16 GMT+0300 (Eastern European Summer Time)';
 
   expect(getDeadline(startDate, timeAmount, timeLimits)).toEqual(deadline);
 });
@@ -52,7 +52,7 @@ it('check "getDeadline" - count days right', () => {
   const { timeLimits } = conditions;
   const timeAmount = 55;
   const startDate = new Date('2021-04-21T10:00:16');
-  const deadline = new Date('2021-04-29T11:00:16');
+  const deadline = 'Thu Apr 29 2021 11:00:16 GMT+0300 (Eastern European Summer Time)';
 
   expect(getDeadline(startDate, timeAmount, timeLimits)).toEqual(deadline);
 });
@@ -64,7 +64,7 @@ it('calculate cost and deadline by "getCostAndDeadline" - UA', () => {
 
   const date = new Date(conditions.currentDeadline);
   date.setHours(date.getHours() + 2);
-  const result = [90, date];
+  const result = [90, date.toString()];
 
   expect(getCostAndDeadline(conditions, lang, textSize, textExt)).toEqual(result);
 });
@@ -76,7 +76,7 @@ it('calculate minimal cost and deadline by "getCostAndDeadline" - RU', () => {
 
   const date = new Date(conditions.currentDeadline);
   date.setHours(date.getHours() + 1);
-  const result = [50, date];
+  const result = [50, date.toString()];
 
   expect(getCostAndDeadline(conditions, lang, textSize, textExt)).toEqual(result);
 });
