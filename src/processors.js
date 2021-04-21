@@ -36,8 +36,7 @@ export const getDeadline = (currentDeadline, timeRange, timeLimits) => {
   if (currentHrs > timeLimits.hrs.end) {
     changeDay(currentDeadline, 1);
   }
-  // all subsequent calls of the main "getDeadline" function
-  // increment the first deadline by "changeTime" function
+  
   const changeTime = (date, hours) => {
     for (let i = 0; i < hours; i += 1) {
       date.setHours(date.getHours() + 1);
