@@ -46,7 +46,7 @@ export const getDeadline = (currentDeadline, timeRange, timeLimits) => {
         date.setHours(hrs.start + 1);
       }
     }
-    return date.toString();
+    return date.toLocaleString();
   };
 
   const resDate = changeTime(currentDeadline, timeRange);
