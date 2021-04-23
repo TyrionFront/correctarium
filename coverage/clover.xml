@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1619204678840" clover="3.2.0">
-  <project timestamp="1619204678840" name="All files">
+<coverage generated="1619205032474" clover="3.2.0">
+  <project timestamp="1619205032474" name="All files">
     <metrics statements="59" coveredstatements="57" conditionals="14" coveredconditionals="11" methods="9" coveredmethods="9" elements="82" coveredelements="77" complexity="0" loc="59" ncloc="59" packages="1" files="3" classes="3"/>
     <file name="app.js" path="/home/sh00ter/PROJECTS/Others/Lambda/correctarium/src/app.js">
       <metrics statements="11" coveredstatements="11" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>

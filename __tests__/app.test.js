@@ -15,7 +15,7 @@ describe('Testing API', () => {
     expect(res.text).toEqual('You are on the main page');
   });
 
-  it('should return cost, time and readline (with extra coeff) - EN', async () => {
+  it('should return cost, time and deadline (with extra coeff) - EN', async () => {
     const language = 'англійська';
     const textSize = 2500;
     const fileExt = '.txt';
@@ -34,7 +34,7 @@ describe('Testing API', () => {
     expect(res.body).toEqual(result);
   });
 
-  it('should return cost, time and readline (without extra coeff) - EN', async () => {
+  it('should return cost, time and deadline (without extra coeff) - EN', async () => {
     const language = 'англійська';
     const textSize = 2500;
     const fileExt = '.doc';
