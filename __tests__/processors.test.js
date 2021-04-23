@@ -4,6 +4,10 @@ import {
 import conditions from '../src/conditions';
 
 
+beforeEach(() => {
+  conditions.currentDeadline = new Date('2021-04-21T16:00:16');
+});
+
 it('check "getCost"', () => {
   const { prices } = conditions;
   const lang = 'українська';

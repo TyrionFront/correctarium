@@ -1,7 +1,11 @@
 import request from 'supertest';
 import app from '../src/app';
+import conditions from '../src/conditions';
 import 'regenerator-runtime';
 
+beforeEach(() => {
+  conditions.currentDeadline = new Date('2021-04-21T16:00:16');
+});
 
 describe('Testing API', () => {
   it('should get to the main page', async () => {
@@ -11,12 +15,31 @@ describe('Testing API', () => {
     expect(res.text).toEqual('You are on the main page');
   });
 
-  it('should return cost, time and readline', async () => {
-    const language = 'українська';
-    const textSize = 1500;
+  it('should return cost, time and readline (with extra coeff) - EN', async () => {
+    const language = 'англійська';
+    const textSize = 2500;
     const fileExt = '.txt';
 
-    const result = { cost: 90, timeRange: 2, deadline: '4/21/2021, 6:00:16 PM' };
+    const result = { cost: 360, timeRange: 10, deadline: '4/22/2021, 5:00:16 PM' };
+
+    const res = await request(app())
+      .post('/calculate')
+      .send({
+        language,
+        textSize,
+        fileExt,
+      });
+
+    expect(res.statusCode).toEqual(201);
+    expect(res.body).toEqual(result);
+  });
+
+  it('should return cost, time and readline (without extra coeff) - EN', async () => {
+    const language = 'англійська';
+    const textSize = 2500;
+    const fileExt = '.doc';
+
+    const result = { cost: 300, timeRange: 8, deadline: '4/22/2021, 3:00:16 PM' };
 
     const res = await request(app())
       .post('/calculate')
