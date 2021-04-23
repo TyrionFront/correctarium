@@ -22,7 +22,7 @@ it('check "getTimeRange"', () => {
   const lang = 'українська';
 
   const textSize = 1500;
-  const timeAmount = 1.63;
+  const timeAmount = 1.6;
   expect(getTimeRange(charsPerHour, textSize, lang)).toEqual(timeAmount);
 
   const textSize2 = 1000;
@@ -63,8 +63,10 @@ it('calculate cost and deadline by "getCostAndDeadline" - UA', () => {
   const textExt = '.txt';
 
   const date = new Date(conditions.currentDeadline);
-  date.setHours(date.getHours() + 2);
-  const result = [90, date.toLocaleString()];
+  const cost = 90;
+  const timeRange = 2;
+  date.setHours(date.getHours() + timeRange);
+  const result = [cost, timeRange, date.toLocaleString()];
 
   expect(getCostAndDeadline(conditions, lang, textSize, textExt)).toEqual(result);
 });
@@ -75,8 +77,10 @@ it('calculate minimal cost and deadline by "getCostAndDeadline" - RU', () => {
   const textExt = '.doc';
 
   const date = new Date(conditions.currentDeadline);
+  const cost = 50;
+  const timeRange = 1;
   date.setHours(date.getHours() + 1);
-  const result = [50, date.toLocaleString()];
+  const result = [cost, timeRange, date.toLocaleString()];
 
   expect(getCostAndDeadline(conditions, lang, textSize, textExt)).toEqual(result);
 });

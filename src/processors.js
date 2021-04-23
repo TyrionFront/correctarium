@@ -1,7 +1,7 @@
 export const getCost = (price, textSize, lang) => {
   const { def, minPrice } = price[lang];
   const priorPrice = textSize * def;
-  const finalPrice = priorPrice < def ? minPrice : priorPrice;
+  const finalPrice = priorPrice < minPrice ? minPrice : priorPrice;
 
   return finalPrice;
 };
@@ -12,7 +12,7 @@ export const getTimeRange = (speed, textSize, lang) => {
   const timeFromSpeedHrs = textSize / def;
   const timeAmount = timeFromSpeedHrs < 1 ? minTimeHrs : timeFromSpeedHrs + baseTimeHrs;
 
-  return Number(timeAmount.toFixed(2));
+  return Number(timeAmount.toFixed(1));
 };
 
 export const getDeadline = (currentDeadline, timeRange, timeLimits) => {
@@ -66,8 +66,9 @@ export const getCostAndDeadline = (conditions, lang, textSize, textExt) => {
 
   const langLowCase = lang.toLowerCase();
   const cost = getCost(prices, textSize, langLowCase) * coeff;
-  const timeRange = getTimeRange(charsPerHour, textSize, langLowCase) * coeff;
-  const deadline = getDeadline(currentDeadline, Math.round(timeRange), timeLimits);
+  const timeRange = Math.round(getTimeRange(charsPerHour, textSize, langLowCase) * coeff);
 
-  return [cost, deadline];
+  const deadline = getDeadline(currentDeadline, timeRange, timeLimits);
+
+  return [cost, Number(timeRange), deadline];
 };
