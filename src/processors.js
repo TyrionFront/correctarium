@@ -70,5 +70,5 @@ export const getCostAndDeadline = (conditions, lang, textSize, textExt) => {
 
   const deadline = getDeadline(currentDeadline, timeRange, timeLimits);
 
-  return [cost, Number(timeRange), deadline];
+  return [cost, timeRange, deadline];
 };
