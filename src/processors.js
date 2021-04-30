@@ -30,7 +30,7 @@ export const getDeadline = (currentDeadline, timeRange, timeLimits) => {
     }
   };
   const currentHrs = currentDeadline.getHours();
-  if (currentHrs < hrs.start) {
+  if (currentHrs < hrs.start || currentHrs > hrs.end) {
     currentDeadline.setHours(hrs.start);
   }
   if (currentHrs > hrs.end) {
