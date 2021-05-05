@@ -50,6 +50,18 @@ it('check "getDeadline" - increment day by 1', () => {
   expect(getDeadline(currentDeadline, timeAmount, timeLimits)).toEqual(deadline);
 });
 
+it('check "getDeadline" - increment deadline sequentially', () => {
+  const { timeLimits, currentDeadline } = conditions;
+
+  const timeAmount = 6;
+  const deadline = (new Date('2021-04-22T13:00:16')).toLocaleString();
+  expect(getDeadline(currentDeadline, timeAmount, timeLimits)).toEqual(deadline);
+
+  const nextTimeAmount = 2;
+  const nextDeadline = (new Date('2021-04-22T15:00:16')).toLocaleString();
+  expect(getDeadline(currentDeadline, nextTimeAmount, timeLimits)).toEqual(nextDeadline);
+});
+
 it('check "getDeadline" - count days right', () => {
   const { timeLimits } = conditions;
   const timeAmount = 55;
