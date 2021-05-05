@@ -35,21 +35,19 @@ it('check "getTimeRange"', () => {
 });
 
 it('check "getDeadline" - within 1 working day', () => {
-  const { timeLimits } = conditions;
+  const { timeLimits, currentDeadline } = conditions;
   const timeAmount = 2;
-  const startDate = new Date('2021-04-21T16:34:16');
-  const deadline = (new Date('2021-04-21T18:34:16')).toLocaleString();
+  const deadline = (new Date('2021-04-21T18:00:16')).toLocaleString();
 
-  expect(getDeadline(startDate, timeAmount, timeLimits)).toEqual(deadline);
+  expect(getDeadline(currentDeadline, timeAmount, timeLimits)).toEqual(deadline);
 });
 
 it('check "getDeadline" - increment day by 1', () => {
-  const { timeLimits } = conditions;
+  const { timeLimits, currentDeadline } = conditions;
   const timeAmount = 6;
-  const startDate = new Date('2021-04-21T16:34:16');
-  const deadline = (new Date('2021-04-22T13:34:16')).toLocaleString();
+  const deadline = (new Date('2021-04-22T13:00:16')).toLocaleString();
 
-  expect(getDeadline(startDate, timeAmount, timeLimits)).toEqual(deadline);
+  expect(getDeadline(currentDeadline, timeAmount, timeLimits)).toEqual(deadline);
 });
 
 it('check "getDeadline" - count days right', () => {
