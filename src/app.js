@@ -1,6 +1,6 @@
 import express from 'express';
 import conditions from './conditions';
-import { getCostAndDeadline } from './processors';
+import { getCostAndTimeRange, getDeadline } from './processors';
 
 export default () => {
   // const [language, size, ext] = process.argv.slice(2);
@@ -15,12 +15,14 @@ export default () => {
   });
 
   app.post('/calculate', (req, res) => {
-    const { textSize, language, fileExt } = req.body;
-    const [
-      cost,
-      timeRange,
-      deadline,
-    ] = getCostAndDeadline(conditions, language, textSize, fileExt);
+    const {
+      textSize,
+      language,
+      fileExt,
+      startTime,
+    } = req.body;
+    const [cost, timeRange] = getCostAndTimeRange(conditions, language, textSize, fileExt);
+    const deadline = getDeadline(timeRange, conditions.timeLimits, new Date(startTime));
 
     res.status(201);
     res.json({ cost, timeRange, deadline });

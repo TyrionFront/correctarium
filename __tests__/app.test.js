@@ -1,13 +1,14 @@
 import request from 'supertest';
 import app from '../src/app';
-import conditions from '../src/conditions';
 import 'regenerator-runtime';
 
-beforeEach(() => {
-  conditions.currentDeadline = new Date('2021-04-21T16:00:16');
-});
 
 describe('Testing API', () => {
+  let startTime;
+  beforeEach(() => {
+    startTime = new Date('2021-04-21T16:00:16');
+  });
+
   it('should get to the main page', async () => {
     const res = await request(app()).get('/');
 
@@ -28,6 +29,7 @@ describe('Testing API', () => {
         language,
         textSize,
         fileExt,
+        startTime,
       });
 
     expect(res.statusCode).toEqual(201);
@@ -47,6 +49,7 @@ describe('Testing API', () => {
         language,
         textSize,
         fileExt,
+        startTime,
       });
 
     expect(res.statusCode).toEqual(201);

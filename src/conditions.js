@@ -1,41 +1,43 @@
 const prices = {
   українська: {
-    def: 0.05,
+    price: 0.05,
     minPrice: 50,
   },
   російська: {
-    def: 0.05,
+    price: 0.05,
     minPrice: 50,
   },
   англійська: {
-    def: 0.12,
+    price: 0.12,
     minPrice: 120,
   },
 };
 
 const charsPerHour = {
   українська: {
-    def: 1333,
+    speed: 1333,
     minTimeHrs: 1,
   },
   російська: {
-    def: 1333,
+    speed: 1333,
     minTimeHrs: 1,
   },
   англійська: {
-    def: 333,
+    speed: 333,
     minTimeHrs: 1,
   },
 };
 
 const timeLimits = {
-  hrs: {
-    start: 10,
-    end: 19,
+  start: {
+    weekDay: 1,
+    hrs: 10,
+    mins: 0,
   },
-  weekDays: {
-    start: 1,
-    end: 5,
+  end: {
+    weekDay: 5,
+    hrs: 19,
+    mins: 0,
   },
 };
 
@@ -47,5 +49,4 @@ export default {
   fileFormats,
   extraCoeff: 1.2,
   timeLimits,
-  currentDeadline: new Date('2021-04-21T16:00:16'),
 };
