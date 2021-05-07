@@ -16,7 +16,7 @@ export const getTimeRange = (speeds, textSize, lang) => {
 };
 
 export const getDeadline = (timeRange, timeLimits, time) => {
-  const isValidTime = Number.isInteger((new Date(time)).getHours());
+  const isValidTime = !Number.isNaN(Date.parse(time));
   const startTime = isValidTime ? new Date(time) : new Date();
   const { start, end } = timeLimits;
 
