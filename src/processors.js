@@ -15,7 +15,9 @@ export const getTimeRange = (speeds, textSize, lang) => {
   return Number(timeAmount.toFixed(1));
 };
 
-export const getDeadline = (timeRange, timeLimits, startTime = new Date()) => {
+export const getDeadline = (timeRange, timeLimits, time) => {
+  const isValidTime = Number.isInteger((new Date(time)).getHours());
+  const startTime = isValidTime ? new Date(time) : new Date();
   const { start, end } = timeLimits;
 
   const incrementDay = (date) => {

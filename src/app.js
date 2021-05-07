@@ -22,7 +22,7 @@ export default () => {
       startTime,
     } = req.body;
     const [cost, timeRange] = getCostAndTimeRange(conditions, language, textSize, fileExt);
-    const deadline = getDeadline(timeRange, conditions.timeLimits, new Date(startTime));
+    const deadline = getDeadline(timeRange, conditions.timeLimits, startTime);
 
     res.status(201);
     res.json({ cost, timeRange, deadline });
