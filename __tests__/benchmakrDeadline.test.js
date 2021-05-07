@@ -23,11 +23,11 @@ describe('calculateResultDate', () => {
     `(
   'calculateResultDate__table',
   ({ startTime, durationHours, expectedResult }) => {
-    const startTimeMs = new Date(startTime);
-    const expectedResultMs = new Date(expectedResult).toLocaleString();
+    const startTime_ = new Date(startTime);
+    const expectedResult_ = new Date(expectedResult).toLocaleString();
 
-    expect(getDeadline(durationHours, conditions.timeLimits, startTimeMs)).toBe(
-      expectedResultMs,
+    expect(getDeadline(durationHours, conditions.timeLimits, startTime_)).toBe(
+      expectedResult_,
     );
   },
 );
